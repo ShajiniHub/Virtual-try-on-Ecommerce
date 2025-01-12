@@ -1,0 +1,27 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Feed</title>
+</head>
+<body>
+    <div class="video-container">
+        <video id="videoElement" autoplay></video>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoElement');
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.error('Error accessing webcam:', error);
+            });
+        }
+    </script>
+</body>
+</html>
